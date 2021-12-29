@@ -1,0 +1,23 @@
+<div class="p-3 text-white bg-dark" style="height: 100vh;">
+    <h2>Formularios Angular</h2>
+    <hr>
+    
+    <h3>Template</h3>
+
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of templateMenu" [routerLink]="[item.ruta]"
+            routerLinkActive="active">
+            {{item.texto}}
+        </li>
+    </ul>
+
+
+    <h3 class="mt-5">Reactive</h3>
+
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of reactiveMenu" [routerLink]="[item.ruta]"
+            routerLinkActive="active">
+            {{item.texto}}
+        </li>
+    </ul>
+</div>

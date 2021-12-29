@@ -1,0 +1,74 @@
+<h2>Template <small>- Básicos</small></h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar()" #miFormulario='ngForm' autocomplete="off">
+            <!-- Producto -->
+            <div class="mb-3 row">
+                <label for="producto" class="col-sm-2 col-form-label">Producto</label>
+                <div class="col-sm-10">
+                    <input type="text" id="producto" name="producto" class='form-control' [ngModel]='initialForm.producto'
+                        placeholder="Nombre del producto..." required minlength="3">
+                    <span class="form-text text-danger"
+                        *ngIf="productoValido()">Debe
+                        de ser de 3 letras</span>
+                </div>
+            </div>
+
+            <!-- Precio -->
+            <div class="mb-3 row">
+                <label for="precio" class="col-sm-2 col-form-label">Precio</label>
+                <div class="col-sm-10">
+                    <input type="number" id="precio" name="precio" ngModel class='form-control'
+                        placeholder="Precio del producto...">
+                        <span class="form-text text-danger"
+                        *ngIf="precioValido()"> El precio debe de ser igual o mayor a 0</span>
+                </div>
+            </div>
+
+            <!-- Existencias -->
+            <div class="mb-3 row">
+                <label for="existencias" class="col-sm-2 col-form-label">Existencias</label>
+                <div class="col-sm-10">
+                    <input type="number" id="existencias" name="existencias" ngModel class='form-control'
+                        placeholder="Existencias del producto..."
+                        customMin
+                        [minimo]="0"
+                        required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button 
+                        class="btn btn-primary"
+                        [disabled]="miFormulario.invalid"
+                        type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{miFormulario.valid}}</pre>
+
+        <span>Value</span>
+        <pre>{{miFormulario.value | json}}</pre>
+
+        <span>Pristine</span>
+        <pre>{{miFormulario.pristine | json}}</pre>
+
+        <span>Touched</span>
+        <pre>{{miFormulario.touched | json}}</pre>
+
+        <span>CustomDirective</span>
+        <pre>{{miFormulario.controls['existencias']?.errors | json}}</pre>
+    </div>
+</div>
